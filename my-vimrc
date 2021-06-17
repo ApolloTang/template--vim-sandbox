@@ -1,0 +1,77 @@
+
+set nocompatible
+set hidden          "/ Handle multiple buffers better. if hidden is not set, TextEdit might fail.
+set laststatus=2    "/ Show the status line all the time
+set nobackup
+set nowritebackup
+set noswapfile
+
+
+"/ OS Platform Detection
+"/ https://unix.stackexchange.com/questions/40047/vim-script-check-running-platform
+let g:platform = 0
+let g:distro = 0
+"/ For more distros to detect see:
+"/ https://www.novell.com/coolsolutions/feature/11251.htm://www.novell.com/coolsolutions/feature/11251.html
+let g:uname = substitute(system("uname"), '\n\+$', '', '')
+if filereadable("/etc/debian_version")
+  let g:platform="Linux"
+  let g:distro="Debian"
+elseif has('mac')
+  let g:platform="Darwin"
+  let g:distro="OSX"
+elseif g:uname == "FreeBSD"
+  let g:platform="FreeBSD"
+elseif has('unix')
+  let g:platform="UNIX"
+elseif has('win32') || has('win64') "win32 also matches on win64 so redundant
+  let g:platform="Windows"
+elseif has('win32unix')
+  let g:platform="Cygwin"
+else
+  let g:platform="Unknown"
+endif
+echom g:platform
+echom g:distro
+
+
+"/ Detech gui START
+let g:gui = 0
+let g:guitype = 0
+if has("gui_running")
+  let g:gui = "has_gui"
+  if has("gui_gtk2")
+    let g:guitype = "gtk2"
+  elseif has("gui_macvim")
+    let g:guitype = "macvim"
+  elseif has("gui_win32")
+    let g:guitype = "win32"
+  endif
+  echom g:guitype
+else
+  let g:gui = "no_gui"
+endif
+echom g:gui
+
+
+let DIR = getcwd()
+echom DIR
+
+"\ Use vim-plug as plugin system
+if !filereadable(DIR.'/dot-vim/plug.vim')
+  echom 'executing curl...'
+  silent !curl --insecure -fLo ./dot-vim/plug.vim
+endif
+
+call plug#begin(DIR.'/dot-vim/plugged')
+  Plug 'https://gitlab.com/protesilaos/tempus-themes-vim.git'
+call plug#end()
+
+"colorscheme tempus_day
+
+
+
+
+
+
+"/---eof---
