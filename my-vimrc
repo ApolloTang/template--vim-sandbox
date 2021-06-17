@@ -11,8 +11,6 @@ set noswapfile
 "/ https://unix.stackexchange.com/questions/40047/vim-script-check-running-platform
 let g:platform = 0
 let g:distro = 0
-"/ For more distros to detect see:
-"/ https://www.novell.com/coolsolutions/feature/11251.htm://www.novell.com/coolsolutions/feature/11251.html
 let g:uname = substitute(system("uname"), '\n\+$', '', '')
 if filereadable("/etc/debian_version")
   let g:platform="Linux"
