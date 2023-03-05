@@ -1,12 +1,14 @@
 ## How to use this sandbox:
 
 ```
-$  vim -u my-vimrc
+cd sandbox
+vim -u my-vimrc
 ```
 or
 
 ```
-$  mvim -u my-vimrc
+cd sandbox
+mvim -u my-vimrc
 ```
 
 or 
