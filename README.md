@@ -9,10 +9,6 @@ or
 $  mvim -u my-vimrc
 ```
 
-Then in normal mode:
+or 
 
-```
-:PlugInstall
-:source ./my-vimrc
-```
-
+Simply double click the file `_clickme-to-open-in-macvim.command`, if you are on Mac and have macvim installed.

@@ -1,1 +1,5 @@
+node_modules
 dot-vim
+*.log
+*.swp
+
