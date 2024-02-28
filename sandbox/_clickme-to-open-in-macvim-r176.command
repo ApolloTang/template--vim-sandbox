@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 cd -- $(dirname "$0")
 echo $(pwd)
-/Applications/MacVim.app/Contents/bin/mvim -u my-vimrc main.txt
+/Applications/MacVim_r176.app/Contents/bin/mvim -u my-vimrc ./main.txt
 
